@@ -1,0 +1,151 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+/* === card === */
+.card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    max-width: 660px;
+    justify-content: flex-start;
+}
+
+.container {
+    position: relative;
+    width: clamp(100px, 20vw, 200px);
+    aspect-ratio: 3 / 4;
+    background-color: #000000;
+    overflow: hidden;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.card-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+/* === layer === */
+.layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.layer1 {
+    background: url('https://via.placeholder.com/300x400/ff9a9a/ffffff?text=Layer+1') center center / cover no-repeat;
+    z-index: 1;
+}
+
+.layer2 {
+    background: url('https://via.placeholder.com/100x100/ffa500/ffffff?text=Layer+2') no-repeat top center;
+    background-size: auto;
+    z-index: 2;
+}
+
+.layer3 {
+    background: url('https://via.placeholder.com/100x100/ffa500/ffffff?text=Layer+2') no-repeat top center;
+    background-size: auto;
+    z-index: 3;
+}
+
+.layer4 {
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 8px;
+    background: transparent;
+}
+
+.layer4 p {
+    color: #ffffff;
+    font-size: clamp(25px, 2.5vw, 50px);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+}
+
+/* === 卡片 hover 特效 === */
+.container:hover .layer1 {
+    transform: scale(1.02);
+    opacity: 0.9;
+}
+
+.container:hover .layer2 {
+    transform: translateY(-10px);
+    opacity: 0.9;
+}
+
+.container:hover .layer3 {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.container:hover .layer4 {
+    transform: translateY(10px);
+    opacity: 0.85;
+}
+
+.layer img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* === floating === */
+.floating-avatar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.floating-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+/* === TopBtn === */
+#scrollToTopBtn {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#scrollToTopBtn.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* === avatar 搖晃特效 === */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.floating-avatar:hover {
+    animation: bounce 0.6s ease infinite;
+}
